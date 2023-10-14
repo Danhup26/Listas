@@ -24,6 +24,9 @@ public class cls_finca {
     public String getCodigo(){return this.str_codigo;}
     public String getNombre(){return this.str_nombre;}
     public String getDireccion(){return this.str_direccion;}
-    public String contacto(){return this.str_contacto;}
+    public String getContacto(){return this.str_contacto;}
     public String getPropietario(){return this.str_propietario;}
+
+
+  
 }

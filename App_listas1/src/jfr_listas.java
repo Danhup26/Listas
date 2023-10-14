@@ -160,6 +160,11 @@ public class jfr_listas extends javax.swing.JFrame {
         btn_consultar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btn_consultar.setForeground(new java.awt.Color(0, 0, 0));
         btn_consultar.setText("Consultar");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
 
         btn_cancelar.setBackground(new java.awt.Color(153, 255, 204));
         btn_cancelar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -267,9 +272,30 @@ public class jfr_listas extends javax.swing.JFrame {
         fnt_guardar(txt_nombre.getText(), txt_codigo.getText(), txt_direccion.getText(), txt_contacto.getText(), txt_propietario.getText());
     }//GEN-LAST:event_btn_guardarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void fnt_consultar(){
+        int_posicion = 0;
+        bln_sw = false;
+        for(int i = 0; i < obj_finca.size(); i++){
+            if(txt_codigo.getText().equals(obj_finca.get(i).getCodigo())){
+                int_posicion = i;
+                bln_sw = true;
+                break;
+            }
+        }
+        if(bln_sw == false){
+            JOptionPane.showMessageDialog(null, "No se encontraron datos"+" Registros", "Consultar", JOptionPane.ERROR_MESSAGE);
+        }else{
+            txt_nombre.setText(obj_finca.get(int_posicion).getNombre());
+             txt_contacto.setText(obj_finca.get(int_posicion).getContacto());
+              txt_direccion.setText(obj_finca.get(int_posicion).getDireccion());
+               txt_propietario.setText(obj_finca.get(int_posicion).getPropietario());
+                   
+        }
+    }
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        fnt_consultar();
+    }//GEN-LAST:event_btn_consultarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
