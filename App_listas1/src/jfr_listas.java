@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author danip
- */
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
 public class jfr_listas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form jfr_listas
-     */
+    LinkedList<cls_finca> obj_finca = new LinkedList<cls_finca>();
+       
+    int int_posicion;
+    boolean bln_sw;
+    
     public jfr_listas() {
         initComponents();
     }
@@ -179,6 +175,11 @@ public class jfr_listas extends javax.swing.JFrame {
         btn_guardar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btn_guardar.setForeground(new java.awt.Color(0, 0, 0));
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -252,6 +253,19 @@ public class jfr_listas extends javax.swing.JFrame {
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
        fnt_limpiar();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void fnt_guardar(String n, String c, String d, String cnt, String p){
+        if(n.equals("") || c.equals("")|| d.equals("")|| cnt.equals("")|| p.equals("")){
+    
+        JOptionPane.showMessageDialog(null, "Debe ingresar"+ " todos los datos", "Registrar", JOptionPane.ERROR_MESSAGE);
+        }else{
+            obj_finca.add(new cls_finca(n,c,d,cnt,p));
+            JOptionPane.showMessageDialog(null, "Fincca registrada"+" con exito","Registrar", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        fnt_guardar(txt_nombre.getText(), txt_codigo.getText(), txt_direccion.getText(), txt_contacto.getText(), txt_propietario.getText());
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**
      * @param args the command line arguments
